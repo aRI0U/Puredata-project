@@ -1,0 +1,55 @@
+#N canvas -8 0 958 966 12;
+#X obj 101 13 adc~ 1;
+#X obj 100 75 *~;
+#X obj 98 282 *~;
+#X obj 92 322 dac~;
+#X obj 156 110 delwrite~ audio-buffer 5000;
+#X obj 133 283 hsl 128 15 0 1 0 0 empty empty Output -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X obj 121 53 hsl 128 15 0 1 0 0 empty empty Gain -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X obj 173 435 delread~ audio-buffer 0;
+#X obj 77 494 *~;
+#X obj 77 544 dac~;
+#X obj 129 497 hsl 128 15 0 1 0 0 empty empty Delay_volume -2 -8 0
+10 -262144 -1 -1 8200 1;
+#X obj 176 373 hsl 128 15 0 1000 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 6400 1;
+#X floatatom 173 406 5 0 0 0 - - -;
+#X obj 306 497 *~;
+#X obj 341 497 hsl 128 15 0 1 0 0 empty empty Feedback_amount -2 -8
+0 10 -262144 -1 -1 8800 1;
+#X obj 278 56 receive~ feedback-signal;
+#X obj 306 521 send~ feedback-signal;
+#X obj 206 186 rev1~;
+#X floatatom 222 158 5 0 0 0 - - -;
+#X obj 54 173 hsl 128 15 0 1 0 0 empty empty balance -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 6 218 *~;
+#X obj 89 196 expr~ 1 - $v1;
+#X obj 185 227 *~;
+#X connect 0 0 1 0;
+#X connect 1 0 17 0;
+#X connect 1 0 20 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 2 0 3 1;
+#X connect 5 0 2 1;
+#X connect 6 0 1 1;
+#X connect 7 0 8 0;
+#X connect 7 0 13 0;
+#X connect 8 0 9 0;
+#X connect 8 0 9 1;
+#X connect 10 0 8 1;
+#X connect 11 0 12 0;
+#X connect 12 0 7 0;
+#X connect 13 0 16 0;
+#X connect 14 0 13 1;
+#X connect 15 0 4 0;
+#X connect 17 0 22 0;
+#X connect 18 0 17 1;
+#X connect 19 0 20 1;
+#X connect 19 0 21 0;
+#X connect 20 0 2 0;
+#X connect 21 0 22 1;
+#X connect 22 0 2 0;
